@@ -69,7 +69,7 @@
 DOMAIN='mydomain.tld'
 PASSWORD=''
 HOSTS=('myhost1' 'myhost2')
-EMAIL='kent@bci.com'
+EMAIL=''
 CACHED_IP_FILE='/var/tmp/namecheap_ddns_ip_'
 #
 # <<<<<<<<<<<<<<<<<<<<<< End of Configuration <<<<<<<<<<<<<<<<<<<<<<
