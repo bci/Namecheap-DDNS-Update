@@ -1,12 +1,12 @@
 Namecheap-DDNS-Update
 =====================
 
-Macintosh bash script to set the ddns ip address of one or more hosts in your domain hosted at namecheap.com
+Macintosh bash script to update the ddns ip address of one or more hosts in a domain hosted at namecheap.com
 
 Getting Started:
 ----------------
-1. Create a A record on namecheap.com for the host you will be updating. _Hint: you can update more then one host, i.e.: @ and www_
-2. Enable DDNS by Modifing your domain and clicking on the Dynamic DNS entry on the left hand menu. Note the Password string that is assigned to this domain.
+1. Create a A record on namecheap.com for the host you will be updating. _Hint: you can update more then one host, i.e.: @ and www. You may also wish to keep a low TTL value for these hosts, i.e: 60-120_
+2. Enable DDNS by Modifing your domain and clicking on the **Dynamic DNS** entry on the left hand menu. Write down the Password string that is assigned to this domain.
 3. Edit the section of the script:
 
 ```
@@ -15,8 +15,44 @@ Getting Started:
 DOMAIN='mydomain.tld'
 PASSWORD=''
 HOSTS=('myhost1' 'myhost2')
-EMAIL='kent@bci.com'
+EMAIL=''
 CACHED_IP_FILE='/var/tmp/namecheap_ddns_ip_'
 #
 # <<<<<<<<<<<<<<<<<<<<<< End of Configuration <<<<<<<<<<<<<<<<<<<<<<
 ```
+Configuration:
+  * `DOMAIN` *string* - name of domain to update
+  * `PASSWORD` *string* - the password given from Namecheap.com
+  * `HOSTS` *array of strings* - the array of hosts to update
+  * `EMAIL` *string* - if exists, then an email will be generated on error or change of IP address
+  * `CACHED_IP_FILE` *string* - path to file holding the last set IP address  
+
+
+Example Configuration:
+----------------------
+```
+DOMAIN='kentswidget.com'
+PASSWORD='2138530d9dea58fa'
+HOSTS=('@' 'www' 'devserver')
+EMAIL='ddns_notices@kentswidget.com'
+CACHED_IP_FILE='/var/tmp/namecheap_ddns_ip_'
+```
+
+Usage:
+------
+_For these examples I will be saving this script in `~/kent/scripts/NamecheapDdnsUpdate.sh`_
+
+- Command line (runs one time)
+  1. Open Terminal
+  2. Enter the command $`bash ~/kent/scripts/NamecheapDdnsUpdate.sh`
+
+
+- Finder (runs one time)
+  1. Open finder and locate NamecheapDdnsUpdate.sh
+  2. Double-click on file
+
+
+- Cron (runs every hour)
+  1. Open Terminal
+  2. Enter the command $`crontab -e`
+  3. Add a line: `@hourly ~/kent/scripts/NamecheapDdnsUpdate.sh`
