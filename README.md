@@ -57,8 +57,8 @@ _For these examples I will be saving this script in `~/kent/scripts/NamecheapDdn
   2. Enter the command $`crontab -e`
   3. Add a line: `@hourly ~/kent/scripts/NamecheapDdnsUpdate.sh`
 
-- Cron (runs every 5 minutes)
-  1. Open Terminal
-  2. Enter the command $`crontab -e`
-  3. Add a line: `*/5 * * * * ~/kent/scripts/NamecheapDdnsUpdate.sh`
-  
+Ignore the script - one liner
+-----------------------------
+_Fill in the domain, password, and host for your account_
+- curl line
+  * $`curl -s https://dynamicdns.park-your-domain.com/update?domain=my.domain.com&password=33598fgc98a1dbcd&host=myhost`
