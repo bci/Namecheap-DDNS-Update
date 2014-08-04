@@ -141,14 +141,22 @@ then
         echo "${ip}" >${saveIpFile}
       fi
     else
-      errorResponse=$(xmllint --xpath '//interface-response/response/ResponseString/text()' - <<< "$response")
-      echo "Error updating DDNS for namecheap.com host ${host}@${DOMAIN}"
-      echo "ResponseString: ${errorResponse}"
-      echo ${response} | xmllint --format -
+      errorResponse=$(xmllint --xpath '//interface-response/responses/response/ResponseString/text()' - <<< "$response")
+      subject="Error updating DDNS for namecheap.com host ${host}@${DOMAIN}"
+      message="Reason: ${errorResponse}"
+#echo ${response} | xmllint --format -
+      formattedResponse="Full Response:\n"$( echo ${response} | xmllint --format - )
+      if [ ! -z "$EMAIL" ]
+      then
+        echo "$message" "$formattedResponse" | mail -s "$subject"
+      fi
+      echo $subject
+      echo -e $message
+      echo -e "$formattedResponse"
     fi
   done
 else
-  echo -e $messages
+  echo -e "$messages"
   exit 1
 fi
 
