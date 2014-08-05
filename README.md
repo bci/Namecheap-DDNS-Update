@@ -28,7 +28,17 @@ Configuration:
   * `CACHED_IP_FILE` *string* - path to file holding the last set IP address  
 
 
-Example Configuration:
+Example Configuration (one host):
+----------------------
+```
+DOMAIN='kentswidget.com'
+PASSWORD='2138530d9dea58fa'
+HOSTS=( devserver )
+EMAIL='ddns_notices@kentswidget.com'
+CACHED_IP_FILE='/var/tmp/namecheap_ddns_ip_'
+```
+
+Example Configuration (three hosts):
 ----------------------
 ```
 DOMAIN='kentswidget.com'
