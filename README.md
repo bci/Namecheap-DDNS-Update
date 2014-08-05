@@ -1,7 +1,7 @@
 Namecheap-DDNS-Update
 =====================
 
-Macintosh bash script to update the ddns ip address of one or more hosts in a domain hosted at namecheap.com
+Bash script to update the your namecheap.com ddns host. Tested under Macintosh OSX 10.9.4 and RHES 7.0
 
 Getting Started:
 ----------------
