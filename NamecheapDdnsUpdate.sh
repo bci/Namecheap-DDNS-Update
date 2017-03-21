@@ -3,10 +3,10 @@
 # File: NamecheapDdnsUpdate.sh
 # Macintosh bash script to set the ddns ip address of one or more hosts in your domain hosted at namecheap.com
 # Created: Kent Behrends, kent@bci.com, 2014-08-01
-# Githup: https://github.com/bci/Namecheap-DDNS-Update.git
+# Github: https://github.com/bci/Namecheap-DDNS-Update.git
 #
 # Description:
-#  Send an UPDATE API method to namecheap.com updating on or more A records. On error response, stop processing ans displat the first error.
+#  Send an UPDATE API method to namecheap.com updating on or more A records. On error response, stop processing and display the first error.
 #  Normal use is as a cron job, but can be run interactively.
 #
 # In a cron job
@@ -107,7 +107,7 @@ for host in "${HOSTS[@]}"
 do
   if [[ ! $host =~ ^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z]|[A-Za-z][A-Za-z0-9\-]*[A-Za-z0-9])$ ]]
   then
-    settingsValidated=fasle
+    settingsValidated=false
     messages="${messages}\nValidation error: Host ${host} is not a valid name for a host"
   else
     saveIpFile=${CACHED_IP_FILE}${host}.txt
@@ -122,7 +122,7 @@ done
 # --------------------------------------------------------------------------------------------
 # Use curl to generate the GET request to namecheap.com
 # --------------------------------------------------------------------------------------------
-if [ settingsValidated ]
+if [ "$settingsValidated" = "true" ]
 then
   for host in "${HOSTS[@]}"
   do
