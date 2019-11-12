@@ -105,7 +105,7 @@ fi
 
 for host in "${HOSTS[@]}"
 do
-  if [[ ! $host =~ ^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z]|[A-Za-z][A-Za-z0-9\-]*[A-Za-z0-9])$ ]]
+  if [[ ! $host =~ ^@|(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z]|[A-Za-z][A-Za-z0-9\-]*[A-Za-z0-9])$ ]]
   then
     settingsValidated=false
     messages="${messages}\nValidation error: Host ${host} is not a valid name for a host"
